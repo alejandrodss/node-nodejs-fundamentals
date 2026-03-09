@@ -1,4 +1,3 @@
-import * as readline from 'node:readline';
 import { stdout as output } from 'node:process';
 
 const progress = () => {
@@ -24,15 +23,12 @@ const progress = () => {
   let counter = 0;
   const intervalId = setInterval(() => {
     const filledWidth = Math.floor(counter / 100 * length);
-    readline.clearLine(output, 0);
-    readline.cursorTo(output, 0);
     const progressBar = '█'.repeat(filledWidth) + ' '.repeat(length - filledWidth);
     counter = Math.min(counter + 100 / (duration / interval), 100);
-    output.write(`[${color}${progressBar}\x1b[0m] ${Math.floor(counter)}%`);
+    output.write(`\r[${color}${progressBar}\x1b[0m] ${Math.floor(counter)}%`);
 
     if (counter === 100) {
-      output.write('\n');
-      output.write('Done!');
+      output.write('\nDone!\n');
       clearInterval(intervalId);
     }
   }, duration / 100);
