@@ -6,3 +6,7 @@ const split = async () => {
 };
 
 await split();
+
+/**
+ * split.js — implement function that reads file source.txt using a Readable Stream and splits it into chunk files: chunk_1.txt, chunk_2.txt, etc. Each chunk should contain at most N lines (N is given as a CLI argument --lines <number>, default: 10). Must use Streams API.
+ */
